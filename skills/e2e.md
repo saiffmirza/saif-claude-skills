@@ -1,3 +1,8 @@
+---
+name: e2e
+description: Analyze the current project and generate Playwright end-to-end tests automatically.
+---
+
 # /e2e — Generate Playwright E2E Tests
 
 Analyze the current project and generate Playwright end-to-end tests automatically.

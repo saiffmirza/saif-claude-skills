@@ -1,3 +1,8 @@
+---
+name: explain
+description: After writing or modifying code, provide a detailed breakdown of what was added, new concepts to research, and hands-on challenges.
+---
+
 # /explain — Learn What Was Built
 
 After writing or modifying code, provide a detailed breakdown so the user understands what was added and what to research further.
