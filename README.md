@@ -8,6 +8,7 @@ Custom skills for [Claude Code](https://claude.com/claude-code).
 |-------|-------------|
 | `/e2e` | Analyze any project and generate Playwright end-to-end tests automatically |
 | `/explain` | Get a detailed breakdown of what was built, new concepts to research, and hands-on challenges |
+| `/tailor-resume` | Generate a one-page tailored resume PDF from a job description |
 
 ## Installation
 
