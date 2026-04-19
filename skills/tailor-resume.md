@@ -72,7 +72,7 @@ Create an HTML file at `~/Documents/tailored-resume.html` using this exact CSS t
 <style>
   @page { size: letter; margin: 0.4in 0.5in; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9pt; line-height: 1.35; color: #2a2a2a; }
+  body { font-family: Arial, Helvetica, sans-serif; font-variant-ligatures: none; font-size: 9pt; line-height: 1.35; color: #2a2a2a; }
   .header { padding-bottom: 8px; border-bottom: 2px solid #2D8B5E; margin-bottom: 10px; }
   .header h1 { font-size: 22pt; font-weight: 700; color: #1a1a1a; letter-spacing: 0.5px; }
   .header .tagline { font-size: 9.5pt; color: #2D8B5E; font-weight: 500; margin-top: 1px; }
