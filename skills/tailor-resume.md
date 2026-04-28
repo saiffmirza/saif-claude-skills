@@ -136,11 +136,40 @@ Then convert to PDF using Chrome headless:
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-sandbox --print-to-pdf="$OUTPUT_PATH" --no-pdf-header-footer ~/Documents/tailored-resume.html
 ```
 
-Clean up the HTML file after generating the PDF.
+Do NOT delete `~/Documents/tailored-resume.html` yet. Keep it until Step 7 passes — it's the debug artifact if the PDF is wrong.
 
 ### Step 7: Verify
 
-Read the generated PDF to confirm it's one page. If it spills to two pages, tighten spacing or trim the weakest bullets and regenerate.
+Check page count with macOS Spotlight metadata (no extra tooling required):
+```bash
+mdls -name kMDItemNumberOfPages "$OUTPUT_PATH"
+```
+Expected output: `kMDItemNumberOfPages = 1`. If `mdls` returns `(null)`, the index hasn't caught up — wait a second and re-run, or fall back to reading the PDF directly.
+
+If it spills to two pages, tighten in this order, re-rendering after each step and re-checking page count:
+1. Trim the weakest Playon bullet (down to a floor of 7)
+2. Shorten the longest project description
+3. Drop the weakest project (down to 2 projects minimum)
+4. Trim a Carputty bullet (down to 2)
+5. As a last resort, drop to 6 Playon bullets — flag this in the Step 8 critique as a forced trim and tell the user
+
+Never drop below 2 projects. If the resume still won't fit after step 5, stop and tell the user which constraint is binding rather than silently shipping a two-page PDF.
+
+Once verification passes, delete `~/Documents/tailored-resume.html`.
+
+### Step 8: Self-critique against the JD
+
+Before reporting success, evaluate the draft against the job description. This is the quality check the user sees, not internal reasoning. Produce a short critique with these four parts:
+
+1. **Keyword coverage.** List the required skills/technologies from the JD. For each, mark whether it appears in the resume (and where: skills, bullet, project) or is missing. If something required is missing, say so plainly rather than glossing over it.
+
+2. **Bullets cut.** List the 2-4 strongest bullets from the points bank that were considered but did not make the page, and why each was cut (space, weaker JD fit, redundancy with another bullet). This is the most useful part: it surfaces whether the cut was correct or whether a kept bullet should be swapped out.
+
+3. **Skills check.** Note which JD-required technologies the skills section leads with vs. buries. If the JD has a dominant theme not reflected up front, flag it.
+
+4. **Weakest link.** One sentence on the part of the resume least likely to land for this specific JD. Be honest. If the user's background is genuinely a stretch for the role, say that.
+
+Keep the critique under ~200 words total. Plain prose, no scores out of 10, no rubric tables.
 
 ## Output
 
@@ -149,4 +178,4 @@ Save the PDF as `~/Documents/SaifMirza-[CompanyName].pdf` where CompanyName is e
 Tell the user:
 - Where the file is saved
 - What tailoring choices you made (bullet reordering, skills emphasis, project selection)
-- Any bullets you considered but cut for space
+- The Step 8 self-critique in full
