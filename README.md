@@ -6,8 +6,10 @@ Custom skills for [Claude Code](https://claude.com/claude-code).
 
 | Skill | Description |
 |-------|-------------|
+| `/business-idea` | Write a comprehensive markdown analysis doc for a business idea or product direction, after walking through every aspect of the idea via discovery questions |
 | `/e2e` | Analyze any project and generate Playwright end-to-end tests automatically |
 | `/explain` | Get a detailed breakdown of what was built, new concepts to research, and hands-on challenges |
+| `/interview-prep` | Generate a tailored interview cheat sheet for a specific job description and round |
 | `/tailor-resume` | Generate a one-page tailored resume PDF from a job description |
 
 ## Installation
